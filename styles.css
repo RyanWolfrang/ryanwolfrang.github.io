@@ -36,10 +36,89 @@ body {
     }
 }
 
+ /* Galería en filas y centrada */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Ajusta el número de columnas automáticamente */
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 32px;
+    justify-items: center;
+    align-items: stretch;
+}
+
+/* Cada item-video ocupa el mismo ancho y se alinea verticalmente */
+.item-video {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* El link ocupa todo el ancho del item y alinea su contenido */
+.imagen-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 440px;
+    height: 100%;
+    text-decoration: none;
+    background: #222;
+    border-radius: 12px;
+    padding: 24px 16px 16px 16px;
+    border: 1.5px solid #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    box-sizing: border-box;
+    transition: transform 0.15s, box-shadow 0.15s;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.imagen-container:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+
+.imagen {
+    width: 100%;
+    max-width: 320px;     /* Más grande */
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.imagen-link {
+    margin-top: auto;
+    margin-bottom: 0;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+
+/* Lista de puntos dentro del link, sin subrayado y color blanco */
+.puntos-video {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 0.95em;
+    list-style-type: disc;
+    text-align: left;
+    width: 100%;
+    max-width: 320px;
+}
+
+.imagen-container .puntos-video li {
+    text-decoration: none !important;
+    color: #fff;
+}
+
+/* Opcional: para que todos los items tengan la misma altura */
+.item-video {
+    min-height: 400px;
 }
 
 @media (max-width: 768px) {
@@ -53,50 +132,6 @@ body {
     height: auto;
     object-fit: cover;
     border-radius: 12px;
-}
-
-.imagen {
-    border-radius: 12px;
-}
-
-.imagen-container {
-    border: 1px solid #fff; /* Enmarcado blanco */
-    border-radius: 12px;
-    padding: 10px;
-    margin-bottom: 20px;
-    position: relative;
-    padding-bottom: 50px; /* Añade padding-bottom de 20px */
-}
-
-.imagen-link {
-    display: block; /* Visible en todos los dispositivos */
-    text-align: center;
-    color: #fff;
-    text-decoration: none;
-    margin-top: 20px; /* Espacio arriba del texto */
-    font-weight: bold; /* Texto en negrita */
-    position: absolute;
-    bottom: 10px; /* Centrando verticalmente en la parte inferior */
-    left: 50%;
-    transform: translateX(-50%);
-    text-transform: uppercase; /* Texto en mayúsculas */
-}
-
-@media (max-width: 768px) {
-    .imagen-link {
-        display: block; /* Visible solo en móvil */
-    }
-    .imagen-container {
-        display: block;
-    }
-    .imagen-container a {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-    }
 }
 
 header {
@@ -121,11 +156,14 @@ h1 {
   }
 
 footer {
-    text-align: center;
-    padding: 1rem;
-    background-color: #1f1f1f; /* Fondo de gris claro */
-    color: #333;
-    margin-top: auto; /* Asegura que el footer esté en la parte inferior */
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    background: #181818;
+    z-index: 100;
+    padding: 12px 0 8px 0;
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.15);
 }
 
 footer a {
@@ -140,10 +178,47 @@ footer a:hover {
 }
 
 .footer-text {
-    color: #a5a5a5; /* Color por defecto */
+    color: #fff;
+    text-align: center;
+    font-size: 1em;
+    margin: 8px 0;
+    word-break: break-word;
+    /* Permite que los enlaces se ajusten y no se oculten */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
 }
 
 .contacto-f {
-    color: #45ac45;
-    text-decoration: none;
+    color: #fff !important;
+    text-decoration: none !important;
+    word-break: break-all;
+    display: inline;
+}
+
+.contacto-f:hover {
+    text-decoration: underline;
+}
+
+.footer-text strong {
+    color: #ffd700;
+}
+
+.item-video {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.puntos-video {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 0.95em;
+    color: #fff;
+    list-style-type: disc;
+    text-align: left;
+    width: 100%;
+    max-width: 320px;
 }
